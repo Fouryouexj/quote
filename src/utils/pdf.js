@@ -149,7 +149,7 @@ export const generatePDF = async (quoteData) => {
         
         doc.setFont('helvetica', 'italic');
         doc.setFontSize(9);
-        doc.text('Send payment confirmation to: tours@roamingnomads.co.ke', 25, paymentBoxY + 26);
+        doc.text('Send payment confirmation to: tours@roamingnomads.co.ke or WhatsApp +254 740 596 771', 25, paymentBoxY + 26);
 
         // Divider line before footer - positioned higher to make room
         const footerStartY = paymentBoxY + 35;
@@ -162,23 +162,34 @@ export const generatePDF = async (quoteData) => {
         // Left side - Contact Information (compact)
         doc.setFontSize(8);
         doc.setFont('helvetica', 'bold');
-        doc.text('CONTACT INFO', 20, footerContentY);
+        doc.text('CONTACT INFORMATION', 20, footerContentY);
         
         doc.setFontSize(7);
         doc.setFont('helvetica', 'normal');
-        doc.text('tours@roamingnomads.co.ke', 20, footerContentY + 8);
-        doc.text('+254 740 596 771 / +254 794 183 530', 20, footerContentY + 15);
-        doc.text('WhatsApp: +254 794 183 530', 20, footerContentY + 22);
+        doc.text('Email: tours@roamingnomads.co.ke', 20, footerContentY + 8);
+        doc.text('Phone: +254 740 596 771', 20, footerContentY + 15);
+        doc.text('Phone: +254 794 183 530', 20, footerContentY + 22);
+        doc.text('WhatsApp: +254 794 183 530', 20, footerContentY + 29);
 
         // Right side - Office Address (compact)
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(8);
-        doc.text('OFFICE ADDRESS', pageWidth - 75, footerContentY);
+        doc.text('OFFICES', pageWidth - 75, footerContentY);
         
         doc.setFontSize(7);
         doc.setFont('helvetica', 'normal');
         doc.text('Salama House, 3rd Floor, Suite 305', pageWidth - 75, footerContentY + 8);
         doc.text('Wabera Street, Nairobi, Kenya', pageWidth - 75, footerContentY + 15);
+        doc.text('Nairobi, Kenya', pageWidth - 75, footerContentY + 22);
+
+        // Terms and conditions line at the bottom
+        doc.setFontSize(6);
+        doc.setFont('helvetica', 'italic');
+        const termsY = pageHeight - 8;
+        const termsText = 'All bookings are subject to Roaming Nomads Tours & Travel terms and conditions';
+        const textWidth = doc.getTextWidth(termsText);
+        const centerX = (pageWidth - textWidth) / 2;
+        doc.text(termsText, centerX, termsY);
 
         doc.save(`Travel_Quote_${quoteData.id}.pdf`);
     } catch (error) {
