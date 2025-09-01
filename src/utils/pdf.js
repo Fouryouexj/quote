@@ -182,6 +182,12 @@ export const generatePDF = async (quoteData) => {
         doc.text('Wabera Street, Nairobi, Kenya', pageWidth - 75, footerContentY + 15);
         doc.text('Nairobi, Kenya', pageWidth - 75, footerContentY + 22);
 
+        // Terms and conditions below contact information
+        doc.setFontSize(7);
+        doc.setFont('helvetica', 'italic');
+        const contactTermsY = footerContentY + 38;
+        doc.text('All bookings are subject to Roaming Nomads Tours & Travel terms and conditions.', 20, contactTermsY);
+
         // Terms and conditions line at the bottom
         doc.setFontSize(6);
         doc.setFont('helvetica', 'italic');
