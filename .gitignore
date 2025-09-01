@@ -58,6 +58,7 @@ pnpm-lock.yaml
 .parcel-cache/
 .eslintcache
 .stylelintcache
+node_modules/.cache/
 
 # Optional npm cache directory
 .npm
